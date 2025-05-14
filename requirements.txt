@@ -1,6 +1,15 @@
-audiomentations==0.33.0
-piper-phonemize==1.1.0
-numpy<2
-torch<2
+audiomentations>=0.39.0 # Align with MicroWakeWord-Trainer-Docker
+piper-phonemize==1.1.0 # Specific to Piper, assume compatible
+numpy>=1.21 # Allow newer numpy, compatible with recent PyTorch
+# torch>=2.1, <2.4 # Example: Aim for a recent, stable PyTorch 2.x
+# torchaudio>=2.1, <2.4 # Align with torch version
+# The specific torch and torchaudio versions should be chosen carefully
+# based on the CUDA version in the tensorflow:2.19.0-gpu-jupyter base image.
+# For now, leaving them commented out, as they are often best installed
+# with specific CUDA versions in mind (e.g., using pip's index URLs for PyTorch).
+# The Dockerfile for MicroWakeWord-Trainer-Docker will handle PyTorch installation
+# if it's not in the base image, ensuring CUDA compatibility.
+# If this piper-sample-generator is used standalone, user needs to install a compatible PyTorch.
+torch
 torchaudio
 webrtcvad
